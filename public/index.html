@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>	
+	<link rel="stylesheet" href="assets/styles/bootstrap.min.css">
+	
+	<link rel="stylesheet" href="assets/styles/app.scss">	
+	<script src="bower_components/angular/angular.min.js"></script>		
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body ng-app="dotastats">
+  <div class="container" ng-controller="mainctrl as mainctrl">
+	<table  class="table table-striped">
+	<tr>
+		<th ng-click="sort('name')">Hero</th>
+		<th ng-click="sort('winrate')">Win Rate with</th>
+		<th ng-click="sort('with_games')">Games with</th>
+		<th ng-click="sort('games')">Games as</th>
+		<th ng-click="sort('lossrate')">Win Rate against</th>
+		<th ng-click="sort('against_games')">Games Against</th>
+		<th ng-click="sort('relativeSuccess')">Success</th>
+		<th ng-click="sort('weightedSuccess')">Weighted Success</th>
+		<th ng-click="sort('withVsOut')">With Vs Against</th>
+	</tr>
+    <tr ng-repeat="hero in mainctrl.player.herolist | orderBy:sortType:sortReverse">		 
+		<td>{{hero.name}}</td>
+		<td>{{hero.winrate}}%</td>
+		<td>{{hero.with_games}}</td>
+		<td>{{hero.games}}</td>
+		<td>{{hero.lossrate}}%</td>
+		<td>{{hero.against_games}}</td>
+		<td>{{hero.relativeSuccess}}%</td>
+		<td>{{hero.weightedSuccess}}%</td>
+		<td>{{hero.withVsOut}}</td>
+	</tr>
+	</table>		
+	
+	
+  </div>  
+  <script src="assets/js/lodash.min.js"></script>
+  <script src="assets/js/app.min.js"></script>
+</body>
+</html>
